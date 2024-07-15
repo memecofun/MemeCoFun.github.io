@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>Click The Space Bar!</h2>
+        <p>Spaces: <span id="spaces">0</span></p>
+        <button onclick="spcplus()" id="dc">Double Click! -- 100</button>
+        <button onclick="spcplus2()" id="dc">Double Click 2! -- 500</button>
+        <button onclick="spcplus3()" id="dc">Double Click 3! -- 500</button>
+        <button onclick="spcplus3()" id="dc">INCANE --You Need 1,000,000,000,000 Spaces But It Costs 1 Spaces</button>
+        <script>
+            var spaces = 0;
+            var canclick = true;
+            var spc = 1;
+
+            document.addEventListener("keypress",(key)=>{//credits to Dieselport ( https://dport.site ) for helping with key detection
+            if (key.keyCode==32 && canclick){ //32 is [SPACE]
+                    canclick = false;
+                    spaces += spc;
+                    document.getElementById("spaces").innerHTML = spaces;
+                }
+            });
+            document.addEventListener("keyup",(key)=>{
+            if (key.keyCode==32){ //32 is [SPACE]
+                   canclick = true;
+                }
+            });
+            function spcplus() {
+                if(spaces >= 100){
+                    spc *= 2;
+                    spaces -= 100;
+                    document.getElementById("dc").remove();
+                }
+            }
+            function spcplus2() {
+                if(spaces >= 500){
+                    spc *= 2;
+                    spaces -= 500;
+                    document.getElementById("dc").remove();
+                }
+            }
+            
+            function spcplus3() {
+                if(spaces >= 1000){
+                    spc *= 2;
+                    spaces -= 100;
+                    document.getElementById("dc").remove();
+                }
+            }
+            function incane() {
+                if(spaces >= 1000000000000000){
+                    spc *= 1000;
+                    spaces -= 1;
+                    document.getElementById("dc").remove();
+                }
+            }
+            
+        </script>
+    </body>
+
+</html>
