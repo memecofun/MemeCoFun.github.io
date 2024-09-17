@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meme Clicker!</title>
+    <style>
+        body {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #aa9ab8;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 30px;
+            text-align: center;
+        }
+        p {
+            color: #ffffff;
+            font-size: 16px;
+            text-align: center;
+        }
+        a {
+            color: #522d91;
+            font-size: 20px;
+        }
+        .particle {
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            opacity: 0.75;
+            z-index: -1;
+        }
+        .shopbutton {
+    background-color: rgb(173, 88, 223);
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+}
+
+.shopbutton:hover {
+    background-color: rgb(192, 144, 219);
+    transition: all 0.1s ease-in-out;
+}
+    </style>
+</head>
+<body>
+    <button onclick="buybd()">BlockDude (<span id="bdcost">15</span> Memes)</button>
+    <p style="font-size:40px;">Memes: <span id="memes">0</span></p>
+    <img src="assets/memes/meme.png" id="memeclick" width="300px" height="300px" alt="Meme!" onclick="memeclick()" draggable="false" style="position:fixed;z-index:1;">
+    <div id="memeparticles"></div>
+    <div id="upgrades" style="background-color:#78619f;position:fixed;top:0%;left:0%;width:20%;height:100%;">
+        <p style="font-size:64px;">Upgrades</p>
+    </div>
+    <div id="buildings" style="background-color:#78619f;position:fixed;top:0%;left:80%;width:20%;height:100%;overflow-y:auto;">
+        <p style="font-size:64px;">Buildings</p>
+        <table class="shopbutton" onclick="buybd()"><tr><td id="image"><img src="assets/buildings/blockdude.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Block Dude</h2><p><span id="bdcost">15</span> Memes</p></td><td id="amount"><p><span id="blockdudes">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buykman()"><tr><td id="image"><img src="assets/buildings/Kman.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Kman</h2><p><span id="kmancost">100</span> Memes</p></td><td id="amount"><p><span id="kmans">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buyfarm()"><tr><td id="image"><img src="assets/buildings/farm.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Meme Farm</h2><p><span id="farmcost">500</span> Memes</p></td><td id="amount"><p><span id="farms">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buyfactory()"><tr><td id="image"><img src="assets/buildings/factory.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Meme factory</h2><p><span id="factorycost">2500</span> Memes</p></td><td id="amount"><p><span id="factories">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buylab()"><tr><td id="image"><img src="assets/buildings/lab.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Meme lab</h2><p><span id="factorycost">10000</span> Memes</p></td><td id="amount"><p><span id="labs">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buygenerator()"><tr><td id="image"><img src="assets/buildings/generator.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Meme generator</h2><p><span id="factorycost">25000</span> Memes</p></td><td id="amount"><p><span id="generators">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buystation()"><tr><td id="image"><img src="assets/buildings/station.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Meme station</h2><p><span id="stationcost">100000</span> Memes</p></td><td id="amount"><p><span id="stations">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buycompiler()"><tr><td id="image"><img src="assets/buildings/compiler.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Meme compiler</h2><p><span id="compilercost">1000000</span> Memes</p></td><td id="amount"><p><span id="compilers">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buyreactor()"><tr><td id="image"><img src="assets/buildings/reactor.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Meme reactor</h2><p><span id="reactorcost">100000000</span> Memes</p></td><td id="amount"><p><span id="reactors">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buyarchive()"><tr><td id="image"><img src="assets/buildings/archive.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Meme archive</h2><p><span id="compilercost">1000000000</span> Memes</p></td><td id="amount"><p><span id="archives">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buyportal()"><tr><td id="image"><img src="assets/buildings/portal.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Meme portal</h2><p><span id="portalcost">100000000</span> Memes</p></td><td id="amount"><p><span id="portals">0</span></p></td></tr></table>
+        <table class="shopbutton" onclick="buyharvester()"><tr><td id="image"><img src="assets/buildings/harvester.png" height="64px" width="64px" draggable="false"></td><td id="nameandcost"><h2>Meme auto clicker</h2><p><span id="harvestercost">1000000000</span> Memes</p></td><td id="amount"><p><span id="harvesters">0</span></p></td></tr></table>
+    </div>
+    <p style="position:fixed;top:90%;left:0%;width:100%;height:10%;font-size:40px;" onclick="document.querySelector('#options').style.display='block';">
+        Options
+    </p>
+    <div id="options" style="background-color:#78619f;position:fixed;top:0%;left:0%;width:100%;height:100%;z-index:999;display:none;">
+        <p style="font-size:40px;">
+            
+            Options<br>
+            <a href="javascript:localStorage.setItem('savedata',JSON.stringify(game));console.log('saved the game');" style="font-size:64px;color:#ffffff;">SAVE</a>
+            <a href="javascript:localStorage.setItem('savedata',null);console.log('wiped save');location.reload();" style="font-size:64px;color:#ff0000;">WIPE SAVE</a>
+            <span onclick="document.querySelector('#options').style.display='none';" style="font-size:64px;color:#ffffff;text-align:left;">Back</span>
+        </p>
+    </div>
+    <script>
+        var memebutton = document.querySelector("#memeclick");
+        var game = JSON.parse(localStorage.getItem('savedata')) || { memes: 0,
+            blockdudes: 0,
+            bdcost: 15,
+            kmans: 0,
+            farmcost: 500,
+            farms: 0,
+            factories: 0,
+            factorycost: 2500,
+            labs: 0,
+            labcost: 10000,
+            generators: 0,
+            generatorcost: 1000000,
+            stations: 0,
+            stationcost: 10000000,
+            compilers: 0,
+            compilercost: 100000000,
+            reactors: 0,
+            reactorcost: 1000000000,
+            archives: 0,
+            archivecost: 10000000000,
+            portals: 0,
+            portalcost: 100000000000,
+            harvesters: 0,
+            harvestercost: 1000000000000 };
+
+        document.getElementById("memes").innerHTML = game.memes;
+
+        setInterval(function(){
+            memebutton.style.left = ((innerWidth / 2) - 150) + "px";
+            memebutton.style.top = ((innerHeight / 2) - 150) + "px";
+        }, 1);
+
+        function memeclick(){
+            game.memes += 1;
+            document.getElementById("memes").innerHTML = game.memes;
+            memebutton.src = "assets/memes/memeo.png";
+            particles();
+            setTimeout(function() {
+                memebutton.src = "assets/memes/meme.png";
+            }, 100);
+        }
+
+        setInterval(function(){
+            localStorage.setItem('savedata', JSON.stringify(game));
+            console.log('saved the game');
+        }, 30000);
+
+        function particles(){
+            var memeparticle = document.createElement("img");
+            var x = Number(memebutton.style.left.split("px")[0]) + 105;
+            var y = Number(memebutton.style.top.split("px")[0]) + 105;
+            var xvol = (Math.random() * 20) - 10;
+            var yvol = -25;
+            memeparticle.src = "assets/memes/meme.png";
+            memeparticle.style.zIndex = 0;
+            memeparticle.style.position = "fixed";
+            memeparticle.style.left = x + "px";
+            memeparticle.style.top = y + 'px';
+            setInterval(function(){
+                memeparticle.style.left = x + "px";
+                memeparticle.style.top = y + 'px';
+                x += xvol;
+                y += yvol;
+                yvol += 1;
+            }, 33);
+            setTimeout(function(){
+                memeparticle.remove();
+            }, 5000);
+            document.querySelector("#memeparticles").appendChild(memeparticle);
+        }
+
+        function buybd(){
+            if (game.memes >= game.bdcost) {
+                game.memes -= game.bdcost;
+                game.blockdudes += 1;
+                game.bdcost = Math.round(bdcost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("bdcost").innerHTML = game.bdcost;
+                document.getElementById("blockdudes").innerHTML = game.blockdudes;
+            }
+        }
+
+        function buykman(){
+            if (game.memes >= game.kmancost) {
+                game.memes -= game.kmancost;
+                game.kmans += 1;
+                game.kmancost = Math.round(game.kmancost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("kmancost").innerHTML = game.kmancost;
+                document.getElementById("kmans").innerHTML = game.kmans;
+            }
+        }
+
+        function buyfarm(){
+            if (game.memes >= game.farmcost) {
+                game.memes -= game.farmcost;
+                game.farms += 1;
+                game.farmcost = Math.round(game.farmcost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("farmcost").innerHTML = game.farmcost;
+                document.getElementById("farms").innerHTML = game.farms;
+            }
+        }
+
+        function buyfactory(){
+            if (game.memes >= game.factorycost) {
+                game.memes -= game.factorycost;
+                game.factories += 5;
+                game.factorycost = Math.round(game.factorycost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("factorycost").innerHTML = game.factorycost;
+                document.getElementById("factories").innerHTML = game.factories;
+            }
+        }
+
+        function buylab(){
+            if (game.memes >= game.labcost) {
+                game.memes -= game.labcost;
+                game.labs += 15;
+                game.labcost = Math.round(game.labcost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("labcost").innerHTML = game.labcost;
+                document.getElementById("labs").innerHTML = game.labs;
+            }
+        }
+
+        function buyresearch(){
+            if (game.memes >= game.researchcost) {
+                game.memes -= game.researchcost;
+                game.research += 1;
+                game.researchcost = Math.round(game.researchcost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("researchcost").innerHTML = game.researchcost;
+                document.getElementById("research").innerHTML = game.research;
+            }
+        }
+
+        function buygenerator(){
+            if (game.memes >= game.generatorcost) {
+                game.memes -= game.generatorcost;
+                game.generators += 1;
+                game.generatorcost = Math.round(game.generatorcost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("generatorcost").innerHTML = game.generatorcost;
+                document.getElementById("generators").innerHTML = game.generators;
+            }
+        }
+
+        function buystation(){
+            if (game.memes >= game.stationcost) {
+                game.memes -= game.stationcost;
+                game.stations += 1;
+                game.stationcost = Math.round(game.stationcost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("stationcost").innerHTML = game.stationcost;
+                document.getElementById("stations").innerHTML = game.stations;
+            }
+        }
+
+        function buycompiler(){
+            if (game.memes >= game.compilercost) {
+                game.memes -= game.compilercost;
+                game.compilers += 1;
+                game.compilercost = Math.round(game.compilercost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("compilercost").innerHTML = game.compilercost;
+                document.getElementById("compilers").innerHTML = game.compilers;
+            }
+        }
+
+        function buyreactor(){
+            if (game.memes >= game.reactorcost) {
+                game.memes -= game.reactorcost;
+                game.reactors += 1;
+                game.reactorcost = Math.round(reactorcost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("reactorcost").innerHTML = game.reactorcost;
+                document.getElementById("reactors").innerHTML = game.reactors;
+            }
+        }
+
+        function buyarchive(){
+            if (game.memes >= game.archivecost) {
+                game.memes -= game.archivecost;
+                game.archives += 1;
+                game.archivecost = Math.round(game.archivecost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("archivecost").innerHTML = game.archivecost;
+                document.getElementById("archives").innerHTML = game.archives;
+            }
+        }
+
+        function buyportal(){
+            if (game.memes >= game.portalcost) {
+                game.memes -= game.portalcost;
+                game.portals += 1;
+                game.portalcost = Math.round(game.portalcost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("portalcost").innerHTML = game.portalcost;
+                document.getElementById("portals").innerHTML = game.portals;
+            }
+        }
+
+        function buyharvester(){
+            if (game.memes >= game.harvestercost) {
+                game.memes -= game.harvestercost;
+                game.harvesters += 1;
+                game.harvestercost = Math.round(game.harvestercost * 1.15);
+                document.getElementById("memes").innerHTML = game.memes;
+                document.getElementById("harvestercost").innerHTML = game.harvestercost;
+                document.getElementById("harvesters").innerHTML = game.harvesters;
+            }
+        }
+
+        setInterval(function(){
+            game.memes += game.blockdudes;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 10000);
+
+        setInterval(function(){
+            game.memes += game.kmans;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 1000);
+
+        setInterval(function(){
+            game.memes += game.farms;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+
+        setInterval(function(){
+            game.memes += game.factories;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+
+        setInterval(function(){
+            game.memes += game.labs;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+
+        setInterval(function(){
+            game.memes += game.research * 2;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+
+        setInterval(function(){
+            game.memes += game.generators * 10;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+
+        setInterval(function(){
+            game.memes += game.stations * 100;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+
+        setInterval(function(){
+            game.memes += game.compilers * game.memes * 0.05;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+
+        setInterval(function(){
+            game.memes += game.reactors + Math.pow(2, game.reactors);
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+
+        setInterval(function(){
+            game.memes += game.archives * 10 * game.archives;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+
+        setInterval(function(){
+            game.memes += game.portals * 100 * game.portals;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+
+        setInterval(function(){
+            game.memes += game.harvesters * 1000 * game.harvesters;
+            document.getElementById("memes").innerHTML = game.memes;
+        }, 100);
+    </script>
+</body>
+</html>
