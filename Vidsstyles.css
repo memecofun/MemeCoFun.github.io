@@ -37,3 +37,19 @@ a {
   color: #522d91;
   font-size: 20px;
 }
+
+.left-bar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    background: #333;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+body {
+    margin-left: 200px; /* prevents overlap with your content */
+}
