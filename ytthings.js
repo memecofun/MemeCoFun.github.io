@@ -1,1 +1,0 @@
-var memecoanimations = "https://MemeCoFun.github.io/images/Memecoanimation.png";
