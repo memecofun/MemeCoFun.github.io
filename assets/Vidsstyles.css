@@ -52,5 +52,5 @@ a {
 
 body {
     margin-left: 200px; /* prevents overlap with your content */
-    overflow: hidden;
+    overflow-y: hidden; /* Hide vertical scrollbar */
 }
