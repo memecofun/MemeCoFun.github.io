@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>MemeCoFun v2 Countdown</title>
+        <link rel="stylesheet" href="assets/styles.css">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: sans-serif;
+            }
+
+            .hero {
+                height: 100vh;
+
+                background-size: cover;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            h1{
+                font-size: 4rem;
+                font-weight: 500;
+                margin-bottom: 20px;
+                color: azure;
+                text-align: center;
+            }
+
+            .timebox{
+                display: flex;
+                gap: 90px;
+            }
+
+            .time{
+                text-align: center;
+            }
+
+            /* Added styles to better center the large time numbers */
+            .time h2{
+                font-size: 5rem;
+                font-weight: 100;
+                color: azure;
+                text-align: center;
+                /* Ensures text aligns properly within the H2's block */
+                display: block; 
+            }
+             p {
+               color: azure;
+                text-align: center;
+                /* Ensures text aligns properly within the P's block */
+                display: block; 
+            }
+        </style>
+    </head>
+    <body>
+    <div class="holder">
+        <div class="hero">
+            <h1>MemeCoFun v2</h1>
+            <div class="timebox">
+
+                <div class="time">
+                    <p>Days</p> <h2 class="days">00</h2>
+                </div>
+
+                <div class="time">
+                    <p>Hours</p><h2 class="hours">00</h2>
+                </div>
+                
+                <div class="time">
+                    <p>Minutes</p><h2 class="minutes">00</h2>
+                </div>
+
+                <div class="time">
+                    <p>Seconds</p><h2 class="seconds">00</h2>
+                </div>
+            </div>
+        </div>
+</div>
+        <script>
+            // Changed from getElementById to querySelector to match the class names in the HTML
+            const Days = document.querySelector('.days');
+            const Hours = document.querySelector('.hours');
+            const Minutes = document.querySelector('.minutes');
+            const Seconds = document.querySelector('.seconds');
+
+            // I kept your specified target date from your original script tag
+            const targetDate = new Date('January 28 2026 21:00:00').getTime();
+
+            function timer() {
+                const currentDate = new Date().getTime();
+                const distance = targetDate - currentDate;
+
+                const days = Math.floor(distance / 1000 / 60 / 60 / 24);
+                const hours = Math.floor(distance / 1000 / 60 / 60) % 24;
+                const minutes = Math.floor(distance / 1000 / 60) % 60;
+                const seconds = Math.floor(distance / 1000) % 60;
+
+                // Ensure two digits are displayed for consistency if needed, though single digits work
+                Days.innerHTML = days < 10 ? '0' + days : days;
+                Hours.innerHTML = hours < 10 ? '0' + hours : hours;
+                Minutes.innerHTML = minutes < 10 ? '0' + minutes : minutes;
+                Seconds.innerHTML = seconds < 10 ? '0' + seconds : seconds;
+
+                if (distance < 0) {
+                    clearInterval(timerInterval); // Stop the timer when the date is reached
+                    Days.innerHTML = `00`;
+                    Hours.innerHTML = `00`;
+                    Minutes.innerHTML = `00`;
+                    Seconds.innerHTML = `00`;
+                }
+            }
+
+            const timerInterval = setInterval(timer, 1000);
+            timer(); // Call immediately to avoid initial delay
+        </script>
+    </body>
+</html>
+

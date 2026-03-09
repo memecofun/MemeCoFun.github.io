@@ -1,0 +1,56 @@
+body {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #aa9ab8;
+}
+
+div {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #a58abd;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 40px;
+}
+h2 {
+  color: #ffffff;
+  font-size: 27px;
+}
+h3 {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+
+p {
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+}
+
+a {
+  color: #522d91;
+  font-size: 20px;
+}
+
+.left-bar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    background-color: #a58abd;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+body {
+    margin-left: 200px; /* prevents overlap with your content */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+}

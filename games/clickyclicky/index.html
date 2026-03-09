@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>cliker Game</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <h1>Clicks: <span id="clicks">0</span></h1>
+    <p>Clickspersecond: <span id="clickspersecond">0</span></p>
+    <p><div onclick="clickplus()" id="button"></div></p>
+    <div id="upgrades" style="background-color:#78619f;position:fixed;top:0%;left:0%;width:20%;height:100%;">
+        <p style="font-size:32px;">Upgrades</p>
+        <button onclick="clickpowerplus()" id="dc">Double Click! -- 50</button>
+    </div>
+    <div id="buildings" style="background-color:#78619f;position:fixed;top:0%;left:80%;width:20%;height:100%;overflow-y:auto;">
+        <p style="font-size:32px;">Buildings</p>
+        <button onclick="cursor()" id="dc">Cursor! -- 100</button>
+    </div>
+    
+    <script>
+        var clicks = 0;
+        var clickpower = 1;
+        var clickspersecond = 0;
+        function clickplus(){
+            clicks+=clickpower;
+            document.querySelector("#clicks").innerText=clicks;
+            document.querySelector("#clickspersecond").innerText=clickspersecond;
+            document.querySelector("#button").src="assets/images/buttonpress.png";
+            setInterval(()=>document.querySelector("#button").src="assets/images/button.png",500);
+        }
+        setInterval(()=>{clicks+=clickspersecond;document.querySelector("#clicks").innerText=clicks;},1000);
+
+        function clickpowerplus() {
+                if(clicks >= 50){
+                    clickpower *= 2;
+                    clicks -= 50;
+                    document.getElementById("dc").remove();
+                }
+            }
+            function cursor() {
+                if(clicks >= 100){
+                    clickspersecond += 1;
+                    clicks -= 100;
+                }
+            }
+    </script>
+</body>
+</html>
