@@ -1,0 +1,39 @@
+p {
+    color: azure;
+    text-align: center;
+}
+
+h1 {
+    color: azure;
+    text-align: center;
+}
+
+h2 {
+    color: azure;
+    text-align: center;
+}
+ .holder {
+        background-color: #ff0000;
+        width:1000px;
+        height:900px;
+        border: 2px solid #ffffff;
+        border-radius: 25px;
+        margin: auto;
+}
+/* thanks to https://dport.site for all code below*/
+body{
+    background:repeat,url(../images/memes.png);
+    background-size:512px 512px;
+    margin:0%;
+    overflow:hidden;
+    animation:anim 16s linear infinite;
+    background-color: #ff0000;
+}
+@keyframes anim{
+    0%{
+        background-position:0px 0px
+    }
+    100%{
+        background-position:2048px 1024px
+    }
+}
