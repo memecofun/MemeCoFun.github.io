@@ -36,7 +36,15 @@
 
         function clickpowerplus() {
                 if(clicks >= 50){
-                    clickpower *= 2;
+                    clickpower += 1;
+                    clicks -= 50;
+                    document.getElementById("dc").remove();
+                }
+            }
+
+                function clickpowerplus2() {
+                if(clicks >= 50){
+                    clickpower += 1a;
                     clicks -= 50;
                     document.getElementById("dc").remove();
                 }
