@@ -15,18 +15,21 @@
     </div>
     <div id="buildings" style="background-color:#78619f;position:fixed;top:0%;left:80%;width:20%;height:100%;overflow-y:auto;">
         <p style="font-size:32px;">Buildings</p>
-        <button onclick="cursor()" id="dc">Cursor! -- 100</button>
+        <button onclick="cursor()" id="dc">Cursor! -- <span id="cursorcost">99999</span></button>
     </div>
     
     <script>
         var clicks = 0;
         var clickpower = 1;
         var clickspersecond = 0;
+        var cursorcost = 25;
+        
         function clickplus(){
             clicks+=clickpower;
             document.querySelector("#clicks").innerText=clicks;
+            document.querySelector("#cursorcost").innerText=cursorcost;
             document.querySelector("#clickspersecond").innerText=clickspersecond;
-            document.querySelector("#button").src="assets/images/buttonpress.png";
+            document.querySelector("#button").src=assets/images/buttonpress.png";
             setInterval(()=>document.querySelector("#button").src="assets/images/button.png",500);
         }
         setInterval(()=>{clicks+=clickspersecond;document.querySelector("#clicks").innerText=clicks;},1000);
@@ -39,9 +42,10 @@
                 }
             }
             function cursor() {
-                if(clicks >= 100){
+                if(clicks >= cursorcost){
                     clickspersecond += 1;
-                    clicks -= 100;
+                    clicks -= cursorcost;
+                    
                 }
             }
     </script>
