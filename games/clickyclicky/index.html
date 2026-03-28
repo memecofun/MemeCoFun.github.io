@@ -29,7 +29,7 @@
             document.querySelector("#clicks").innerText=clicks;
             document.querySelector("#cursorcost").innerText=cursorcost;
             document.querySelector("#clickspersecond").innerText=clickspersecond;
-            document.querySelector("#button").src=assets/images/buttonpress.png";
+            document.querySelector("#button").src="assets/images/buttonpress.png";
             setInterval(()=>document.querySelector("#button").src="assets/images/button.png",500);
         }
         setInterval(()=>{clicks+=clickspersecond;document.querySelector("#clicks").innerText=clicks;},1000);
