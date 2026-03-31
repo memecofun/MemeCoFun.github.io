@@ -36,21 +36,33 @@
         setInterval(()=>{clicks+=clickspersecond;document.querySelector("#clicks").innerText=clicks;},1000);
 
         function clickpowerplus() {
+            document.querySelector("#clicks").innerText=clicks;
+            document.querySelector("#cursorcost").innerText=cursorcost;
+            document.querySelector("#clickspersecond").innerText=clickspersecond;
+            document.querySelector("#button").src="assets/images/buttonpress.png";
                 if(clicks >= 50){
                     clickpower += 1;
                     clicks -= 50;
-                    document.getElementById("dc2").remove();
+                    document.getElementById("dc").remove();
                 }
             }
 
                 function clickpowerplus2() {
+            document.querySelector("#clicks").innerText=clicks;
+            document.querySelector("#cursorcost").innerText=cursorcost;
+            document.querySelector("#clickspersecond").innerText=clickspersecond;
+            document.querySelector("#button").src="assets/images/buttonpress.png";
                 if(clicks >= 100){
                     clickpower += 1;
                     clicks -= 100;
-                    document.getElementById("dc").remove();
+                    document.getElementById("dc2").remove();
                 }
             }
             function cursor() {
+            document.querySelector("#clicks").innerText=clicks;
+            document.querySelector("#cursorcost").innerText=cursorcost;
+            document.querySelector("#clickspersecond").innerText=clickspersecond;
+            document.querySelector("#button").src="assets/images/buttonpress.png";
                 if(clicks >= cursorcost){
                     clickspersecond += 1;
                     clicks -= cursorcost;
