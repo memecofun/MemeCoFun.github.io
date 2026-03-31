@@ -12,10 +12,11 @@
     <div id="upgrades" style="background-color:#78619f;position:fixed;top:0%;left:0%;width:20%;height:100%;">
         <p style="font-size:32px;">Upgrades</p>
         <button onclick="clickpowerplus()" id="dc">Double Click! -- 50</button>
+        <button onclick="clickpowerplus2()" id="dc2">3 Fingers! -- 100</button>
     </div>
     <div id="buildings" style="background-color:#78619f;position:fixed;top:0%;left:80%;width:20%;height:100%;overflow-y:auto;">
         <p style="font-size:32px;">Buildings</p>
-        <button onclick="cursor()" id="dc">Cursor! -- <span id="cursorcost">99999</span></button>
+        <button onclick="cursor()" id="dc">Cursor! -- <span id="cursorcost">25</span></button>
     </div>
     
     <script>
@@ -38,14 +39,14 @@
                 if(clicks >= 50){
                     clickpower += 1;
                     clicks -= 50;
-                    document.getElementById("dc").remove();
+                    document.getElementById("dc2").remove();
                 }
             }
 
                 function clickpowerplus2() {
-                if(clicks >= 50){
+                if(clicks >= 100){
                     clickpower += 1;
-                    clicks -= 50;
+                    clicks -= 100;
                     document.getElementById("dc").remove();
                 }
             }
@@ -53,7 +54,7 @@
                 if(clicks >= cursorcost){
                     clickspersecond += 1;
                     clicks -= cursorcost;
-                    
+                    cursorcost *= 2
                 }
             }
     </script>
