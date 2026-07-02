@@ -27,7 +27,7 @@ body{
     margin:0%;
     overflow:hidden;
     animation:anim 16s linear infinite;
-    background-color: #ff0000;
+    background-color: #d14830;
 }
 @keyframes anim{
     0%{
