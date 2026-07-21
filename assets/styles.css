@@ -20,8 +20,10 @@ h2 {
  .holder {
         background-color: #8a47c4;
         width:1000px;
+        height:900px;
         border: 2px solid #ffffff;
         border-radius: 25px;
+        margin: auto;
 }
 /* thanks to https://dport.site for all code below*/
 body{
@@ -30,7 +32,7 @@ body{
     margin:0%;
     overflow:hidden;
     animation:anim 16s linear infinite;
-    background-color: #b694d3;
+    background-color: #aa9ab8;
 }
 @keyframes anim{
     0%{
