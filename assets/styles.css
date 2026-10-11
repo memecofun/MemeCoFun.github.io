@@ -25,7 +25,7 @@ h2 {
     border: 2px solid #ffffff;
     border-radius: 25px;
     margin: auto;    
-    overflow: auto;
+    overflow: scroll;
     padding: 20px;
     box-sizing: border-box;    
 }
