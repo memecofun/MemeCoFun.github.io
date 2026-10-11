@@ -17,18 +17,19 @@ h2 {
     color: azure;
     text-align: center;
 }
- .holder {
-        background-color: #8a47c4;
-        width:1000px;
-        height:1000px;
-        border: 2px solid #ffffff;
-        border-radius: 25px;
-        margin: auto;    
-        overflow: auto;
-        padding: 20px;
-        box-sizing: border-box;    
-    
+.holder {
+    background-color: #8a47c4;
+    width: 90%;          /* Maximize width but keep it responsive */
+    max-width: 600px;    /* Prevents it from getting too wide */
+    height: 400px;       /* Shorter height so content is forced to scroll */
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    margin: auto;    
+    overflow: auto;
+    padding: 20px;
+    box-sizing: border-box;    
 }
+
 /* thanks to https://dport.site for all code below*/
 body{
     background:repeat,url(../images/memes.png);
