@@ -19,9 +19,9 @@ h2 {
 }
 .holder {
     background-color: #8a47c4;
-    width: 90%;          /* Maximize width but keep it responsive */
-    max-width: 600px;    /* Prevents it from getting too wide */
-    height: 400px;       /* Shorter height so content is forced to scroll */
+    width: 90%;  
+    max-width: 600px;    
+    height: 800px;       
     border: 2px solid #ffffff;
     border-radius: 25px;
     margin: auto;    
