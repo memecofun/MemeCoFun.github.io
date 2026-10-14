@@ -19,9 +19,8 @@ h2 {
 }
 .holder {
     background-color: #8a47c4;
-    width: 90%;  
-    max-width: 600px;    
-    height: 800px;       
+    width: 70%;    
+    height: 100%;       
     border: 2px solid #ffffff;
     border-radius: 25px;
     margin: auto;    
