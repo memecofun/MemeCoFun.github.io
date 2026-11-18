@@ -1,0 +1,5 @@
+if ip: 147:3564:0975:096 connect:
+  send ERROR404
+  /-
+  send ERROR404
+:EndStaitment
